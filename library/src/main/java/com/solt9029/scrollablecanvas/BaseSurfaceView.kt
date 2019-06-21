@@ -1,6 +1,7 @@
 package com.solt9029.scrollablecanvas
 
 import android.content.Context
+import android.graphics.PixelFormat
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
@@ -20,6 +21,7 @@ abstract class BaseSurfaceView @JvmOverloads constructor(
         holder.addCallback(this)
         requestFocus()
         setZOrderOnTop(true)
+        holder.setFormat(PixelFormat.TRANSLUCENT)
     }
 
     abstract fun draw()

@@ -3,23 +3,15 @@ package com.solt9029.scrollablecanvas.example
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.PixelFormat
 import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import com.solt9029.scrollablecanvas.BaseSurfaceView
 
-class CustomBlueSurfaceView : BaseSurfaceView, SurfaceHolder.Callback {
-    constructor(context: Context) : super(context)
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
-
-    init {
-        holder.setFormat(PixelFormat.TRANSLUCENT)
-    }
-
+class CustomBlueSurfaceView @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
+) : BaseSurfaceView(context, attrs, defStyle), SurfaceHolder.Callback {
+    
     override fun draw() {
         val canvas = holder.lockCanvas()
 
