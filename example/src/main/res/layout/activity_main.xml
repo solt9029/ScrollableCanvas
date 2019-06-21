@@ -19,7 +19,7 @@
         <com.solt9029.scrollablecanvas.ScrollableCanvasContainerLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:sc_height="5000dp">
+                app:sc_height="50000dp">
 
             <com.solt9029.scrollablecanvas.example.CustomRedSurfaceView
                     android:layout_width="match_parent"

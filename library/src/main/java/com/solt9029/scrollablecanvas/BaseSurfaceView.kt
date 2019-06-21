@@ -5,14 +5,10 @@ import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 
-abstract class BaseSurfaceView : SurfaceView, SurfaceHolder.Callback {
+abstract class BaseSurfaceView @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
+) : SurfaceView(context, attrs, defStyle), SurfaceHolder.Callback {
     var translateYPx: Int = 0
-
-    constructor(context: Context) : super(context)
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
     fun updateTranslateYPx(translateYPx: Int) {
         this.translateYPx = translateYPx
