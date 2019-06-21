@@ -17,7 +17,7 @@ class ScrollableCanvasContainerLayout @JvmOverloads constructor(
     var content: FrameLayout? = null
     var relativeLayout: RelativeLayout? = null
 
-    fun setRelativeLayoutHeightPx(heightPx: Int) {
+    fun setHeightPx(heightPx: Int) {
         val params = relativeLayout?.layoutParams
         params?.height = heightPx
         relativeLayout?.layoutParams = params
@@ -43,7 +43,7 @@ class ScrollableCanvasContainerLayout @JvmOverloads constructor(
         // style
         val a = context.obtainStyledAttributes(attrs, R.styleable.ScrollableCanvasContainerLayout, defStyle, 0)
         val heightPx = a.getDimensionPixelSize(R.styleable.ScrollableCanvasContainerLayout_sc_height, 2000)
-        setRelativeLayoutHeightPx(heightPx)
+        setHeightPx(heightPx)
         a.recycle()
     }
 
