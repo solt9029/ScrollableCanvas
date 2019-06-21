@@ -5,16 +5,16 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AbsoluteLayout
+import android.widget.FrameLayout
 import android.widget.RelativeLayout
 
 
 class ScrollableCanvasContainerLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
-) : AbsoluteLayout(context, attrs, defStyle) {
+) : FrameLayout(context, attrs, defStyle) {
     var views: MutableList<View> = mutableListOf() // views inside of container
     var scrollContainerView: ScrollContainerView? = null
-    var content: AbsoluteLayout? = null
+    var content: FrameLayout? = null
     var relativeLayout: RelativeLayout? = null
 
     fun setRelativeLayoutHeightPx(heightPx: Int) {
