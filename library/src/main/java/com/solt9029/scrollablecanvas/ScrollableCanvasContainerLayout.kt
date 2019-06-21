@@ -14,21 +14,15 @@ class ScrollableCanvasContainerLayout : AbsoluteLayout {
     var content: AbsoluteLayout? = null
     var relativeLayout: RelativeLayout? = null
 
-    constructor(context: Context) : super(context) {
-        init()
-    }
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        init()
-    }
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
-        init()
-    }
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
-    private fun init() {
+    init {
         LayoutInflater.from(context).inflate(R.layout.scrollable_canvas_container_layout, this)
-        
+
         scrollContainerView = findViewById(R.id.scroll_container_view)
         content = findViewById(R.id.content)
         relativeLayout = findViewById(R.id.relative_layout)
