@@ -4,7 +4,7 @@
     <data>
 
         <variable
-                name="height"
+                name="heightPx"
                 type="Integer"/>
     </data>
 
@@ -19,7 +19,7 @@
         <com.solt9029.scrollablecanvas.ScrollableCanvasContainerLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                sc:height="@{height}">
+                sc:height_px="@{heightPx}">
 
             <com.solt9029.scrollablecanvas.example.CustomRedSurfaceView
                     android:layout_width="match_parent"
