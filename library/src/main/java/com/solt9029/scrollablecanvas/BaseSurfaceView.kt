@@ -6,7 +6,7 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 
 abstract class BaseSurfaceView : SurfaceView, SurfaceHolder.Callback {
-    private var translateYPx: Int = 0
+    var translateYPx: Int = 0
 
     constructor(context: Context) : super(context) {
         init()
