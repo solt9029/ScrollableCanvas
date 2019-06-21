@@ -6,6 +6,8 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 
 abstract class BaseSurfaceView : SurfaceView, SurfaceHolder.Callback {
+    private var translateYPx: Int = 0
+
     constructor(context: Context) : super(context) {
         init()
     }
@@ -16,6 +18,11 @@ abstract class BaseSurfaceView : SurfaceView, SurfaceHolder.Callback {
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
         init()
+    }
+
+    fun updateTranslateYPx(translateYPx: Int) {
+        this.translateYPx = translateYPx
+        draw()
     }
 
     private fun init() {

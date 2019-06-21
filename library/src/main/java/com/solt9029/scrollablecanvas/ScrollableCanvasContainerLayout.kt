@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.AbsoluteLayout
 import com.solt9029.scrollablecanvas.databinding.ScrollableCanvasContainerLayoutBinding
 
-
 class ScrollableCanvasContainerLayout : AbsoluteLayout {
     var binding: ScrollableCanvasContainerLayoutBinding? = null
+    var views: MutableList<View> = mutableListOf() // views inside of container
 
     constructor(context: Context) : super(context) {
         init()
@@ -28,6 +28,16 @@ class ScrollableCanvasContainerLayout : AbsoluteLayout {
     private fun init() {
         val inflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(inflater, R.layout.scrollable_canvas_container_layout, this, true)
+
+        binding?.scrollContainerView?.listener = object : ScrollContainerView.OnScrollChangeListener {
+            override fun onScrollChange(x: Int, y: Int, oldX: Int, oldY: Int) {
+                views.forEach {
+                    if (it is BaseSurfaceView) {
+                        it.updateTranslateYPx(y)
+                    }
+                }
+            }
+        }
     }
 
     override fun addView(child: View, index: Int, params: ViewGroup.LayoutParams) {
@@ -35,7 +45,8 @@ class ScrollableCanvasContainerLayout : AbsoluteLayout {
             super.addView(child, index, params)
             return
         }
-        binding?.content?.addView(child, index, params)
 
+        binding?.content?.addView(child, index, params)
+        views.add(child)
     }
 }
