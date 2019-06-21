@@ -1,17 +1,18 @@
 package com.solt9029.scrollablecanvas
 
 import android.content.Context
-import android.databinding.DataBindingUtil
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsoluteLayout
-import com.solt9029.scrollablecanvas.databinding.ScrollableCanvasContainerLayoutBinding
+import android.widget.RelativeLayout
 
 class ScrollableCanvasContainerLayout : AbsoluteLayout {
-    var binding: ScrollableCanvasContainerLayoutBinding? = null
     var views: MutableList<View> = mutableListOf() // views inside of container
+    var scrollContainerView: ScrollContainerView? = null
+    var content: AbsoluteLayout? = null
+    var relativeLayout: RelativeLayout? = null
 
     constructor(context: Context) : super(context) {
         init()
@@ -26,10 +27,13 @@ class ScrollableCanvasContainerLayout : AbsoluteLayout {
     }
 
     private fun init() {
-        val inflater = LayoutInflater.from(context)
-        binding = DataBindingUtil.inflate(inflater, R.layout.scrollable_canvas_container_layout, this, true)
+        LayoutInflater.from(context).inflate(R.layout.scrollable_canvas_container_layout, this)
+        
+        scrollContainerView = findViewById(R.id.scroll_container_view)
+        content = findViewById(R.id.content)
+        relativeLayout = findViewById(R.id.relative_layout)
 
-        binding?.scrollContainerView?.listener = object : ScrollContainerView.OnScrollChangeListener {
+        scrollContainerView?.listener = object : ScrollContainerView.OnScrollChangeListener {
             override fun onScrollChange(x: Int, y: Int, oldX: Int, oldY: Int) {
                 views.forEach {
                     if (it is BaseSurfaceView) {
@@ -41,12 +45,12 @@ class ScrollableCanvasContainerLayout : AbsoluteLayout {
     }
 
     override fun addView(child: View, index: Int, params: ViewGroup.LayoutParams) {
-        if (binding?.content == null) {
+        if (content == null) {
             super.addView(child, index, params)
             return
         }
 
-        binding?.content?.addView(child, index, params)
+        content?.addView(child, index, params)
         views.add(child)
     }
 }
