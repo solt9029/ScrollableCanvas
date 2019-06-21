@@ -8,24 +8,18 @@ import android.view.SurfaceView
 abstract class BaseSurfaceView : SurfaceView, SurfaceHolder.Callback {
     var translateYPx: Int = 0
 
-    constructor(context: Context) : super(context) {
-        init()
-    }
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        init()
-    }
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
-        init()
-    }
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
     fun updateTranslateYPx(translateYPx: Int) {
         this.translateYPx = translateYPx
         draw()
     }
 
-    private fun init() {
+    init {
         isFocusable = true
         holder.addCallback(this)
         requestFocus()
