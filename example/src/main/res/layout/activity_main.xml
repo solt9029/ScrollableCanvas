@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:sc="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -19,7 +19,7 @@
         <com.solt9029.scrollablecanvas.ScrollableCanvasContainerLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                sc:height_px="@{heightPx}">
+                app:sc_height="5000dp">
 
             <com.solt9029.scrollablecanvas.example.CustomRedSurfaceView
                     android:layout_width="match_parent"

@@ -8,19 +8,40 @@ import android.view.ViewGroup
 import android.widget.AbsoluteLayout
 import android.widget.RelativeLayout
 
+
 class ScrollableCanvasContainerLayout : AbsoluteLayout {
     var views: MutableList<View> = mutableListOf() // views inside of container
     var scrollContainerView: ScrollContainerView? = null
     var content: AbsoluteLayout? = null
     var relativeLayout: RelativeLayout? = null
 
-    constructor(context: Context) : super(context)
+    constructor(context: Context) : super(context) {
+        init()
+    }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        init()
+        val a = context.obtainStyledAttributes(attrs, R.styleable.ScrollableCanvasContainerLayout)
+        val heightPx = a.getDimensionPixelSize(R.styleable.ScrollableCanvasContainerLayout_sc_height, 2000)
+        setRelativeLayoutHeightPx(heightPx)
+        a.recycle()
+    }
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
+        init()
+        val a = context.obtainStyledAttributes(attrs, R.styleable.ScrollableCanvasContainerLayout, defStyle, 0)
+        val heightPx = a.getDimensionPixelSize(R.styleable.ScrollableCanvasContainerLayout_sc_height, 2000)
+        setRelativeLayoutHeightPx(heightPx)
+        a.recycle()
+    }
 
-    init {
+    fun setRelativeLayoutHeightPx(heightPx: Int) {
+        val params = relativeLayout?.layoutParams
+        params?.height = heightPx
+        relativeLayout?.layoutParams = params
+    }
+
+    private fun init() {
         LayoutInflater.from(context).inflate(R.layout.scrollable_canvas_container_layout, this)
 
         scrollContainerView = findViewById(R.id.scroll_container_view)
