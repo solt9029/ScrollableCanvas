@@ -11,7 +11,7 @@ abstract class BaseSurfaceView @JvmOverloads constructor(
 ) : SurfaceView(context, attrs, defStyle), SurfaceHolder.Callback {
     var translateYPx: Int = 0
 
-    fun updateTranslateYPx(translateYPx: Int) {
+    fun draw(translateYPx: Int) {
         this.translateYPx = translateYPx
         draw()
     }

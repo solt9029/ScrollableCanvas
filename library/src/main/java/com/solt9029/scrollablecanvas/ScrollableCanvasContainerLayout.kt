@@ -34,7 +34,7 @@ class ScrollableCanvasContainerLayout @JvmOverloads constructor(
             override fun onScrollChange(x: Int, y: Int, oldX: Int, oldY: Int) {
                 views.forEach {
                     if (it is BaseSurfaceView) {
-                        it.updateTranslateYPx(y)
+                        it.draw(y)
                     }
                 }
             }
