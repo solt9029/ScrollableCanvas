@@ -1,5 +1,32 @@
 # ScrollableCanvas
 
+[![](https://jitpack.io/v/solt9029/ScrollableCanvas.svg)](https://jitpack.io/#solt9029/ScrollableCanvas)
+
+## Setup
+
+( [https://jitpack.io/#solt9029/ScrollableCanvas](https://jitpack.io/#solt9029/ScrollableCanvas) )
+
+- Add the JitPack repository to your build file.
+
+```gradle
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+```
+
+- Add the dependency.
+
+```gradle
+    dependencies {
+        implementation 'com.github.solt9029:ScrollableCanvas:Tag'
+    }
+```
+
+
+
 ## Example
 
 ### Layout
